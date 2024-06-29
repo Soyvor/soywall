@@ -15,7 +15,7 @@ const formatUrl = (params)=>{ // {q, page, category, order}
 }
 export const apiCall = async (params)=>{
     try{
-        const response = await axios.get(formatUrl{params})
+        const response = await axios.get(formatUrl(params))
         return data;
     }catch(error){
         console.log('error aa gaya', err.message);
