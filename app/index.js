@@ -3,6 +3,7 @@ import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { theme } from '../constants/theme';
+import { useRouter } from 'expo-router';
 
 // Utility functions for responsive design
 const { width, height } = Dimensions.get('window');
@@ -10,6 +11,7 @@ const wp = (percentage) => (width * percentage) / 100;
 const hp = (percentage) => (height * percentage) / 100;
 
 const WelcomeScreen = () => {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
@@ -28,17 +30,17 @@ const WelcomeScreen = () => {
           />
           {/* Content */}
           <View style={styles.contentContainer}>
-            <Text style={styles.title}>
+            <Animated.Text entering={FadeInDown.delay(400).springify()} style={styles.title}>
               Pixels
-            </Text>
-            <Text style={styles.punchLine}>
+            </Animated.Text>
+            <Animated.Text entering={FadeInDown.delay(500).springify()} style={styles.punchLine}>
               Every Pixel Tells a Story
-            </Text>
+            </Animated.Text>
             <View>
-              <Pressable style={styles.startButton}>
-                <Text style={styles.startText}>
+              <Pressable onPress={()=>router.push('home')} style={styles.startButton}>
+                <Animated.Text entering={FadeInDown.delay(600).springify()} style={styles.startText}>
                   Start Explore
-                </Text>
+                </Animated.Text>
               </Pressable>
             </View>
           </View>
