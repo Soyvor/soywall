@@ -12,13 +12,14 @@ const hp = (percentage) => (height * percentage) / 100;
 
 const WelcomeScreen = () => {
   const router = useRouter();
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
       <ImageBackground
         source={require('../assets/images/welcome.png')}
         style={styles.bgImage}
-        resizeMode='cover'
+        resizeMode="cover"
       >
         {/* LinearGradient */}
         <Animated.View entering={FadeInDown.duration(600)} style={{ flex: 1 }}>
@@ -36,13 +37,11 @@ const WelcomeScreen = () => {
             <Animated.Text entering={FadeInDown.delay(500).springify()} style={styles.punchLine}>
               Every Pixel Tells a Story
             </Animated.Text>
-            <View>
-              <Pressable onPress={()=>router.push('home')} style={styles.startButton}>
-                <Animated.Text entering={FadeInDown.delay(600).springify()} style={styles.startText}>
-                  Start Explore
-                </Animated.Text>
-              </Pressable>
-            </View>
+            <Pressable onPress={() => router.push('home')} style={styles.startButton}>
+              <Animated.Text entering={FadeInDown.delay(600).springify()} style={styles.startText}>
+                Start Explore
+              </Animated.Text>
+            </Pressable>
           </View>
         </Animated.View>
       </ImageBackground>
@@ -56,7 +55,7 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     width: wp(100),
-    height: hp(110),  // Adjust to cover half of the screen height
+    height: hp(110), // Adjust to cover half of the screen height
     position: 'absolute',
     top: 0,
     bottom: 0,
